@@ -14,5 +14,12 @@ pipeline{
         sh "mvn clean install"
       }
     }
+    stage("deploy code"){
+      steps{
+        sshagent(["deploy_user"]){
+              sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@13.233.229.14:/usr/local/tomcat/webapps"
+        }
+      }
+    }
   }
 }
