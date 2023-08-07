@@ -9,7 +9,7 @@ pipeline{
         git "https://github.com/sankar0812/hello-world-multibranch.git"
       }
     }
-    stage("maven build"){
+    stage("maven build code"){
       steps{
         sh "mvn clean install"
       }
